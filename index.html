@@ -1,36 +1,555 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uzair Ahmed | Developer Portfolio</title>
+    <title>Vision Systems | Enterprise Cloud, IAM & Next-Gen IT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            900: '#0B1120',
+                            800: '#0F172A',
+                            700: '#1E293B',
+                            600: '#334155'
+                        },
+                        brand: {
+                            blue: '#0284C7',
+                            cyan: '#06B6D4',
+                            accent: '#38BDF8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; padding: 20px; }
-        .container { max-width: 800px; margin: 40px auto; background: #1e293b; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 10px; }
-        h2 { color: #94a3b8; font-size: 1.2rem; font-weight: 400; margin-bottom: 20px; }
-        p { color: #cbd5e1; margin-bottom: 20px; font-size: 1.1rem; }
-        .btn { display: inline-block; background: #0284c7; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: #0369a1; }
-        .skills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-        .tag { background: #334155; color: #38bdf8; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at 50% 20%, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 1) 70%);
+        }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Uzair Ahmed</h1>
-        <h2>Cloud & IAM | Netwoking </h2>
-        <p>Welcome to my official website! I specialize in Cloud, Identity Management, and Web Development. This site is hosted for free using GitHub Pages.</p>
-        
-        <a href="https://github.com/uzairah14" class="btn" target="_blank">View GitHub Profile</a>
+<body class="bg-navy-900 text-slate-100 font-sans antialiased selection:bg-brand-blue selection:text-white">
 
-        <div class="skills">
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Cloud Computing</span>
-            <span class="tag">IAM</span>
-            <span class="tag">GitHub Pages</span>
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-cyan flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-blue/20">
+                        V
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-white group-hover:text-brand-accent transition">VISION</span>
+                        <span class="text-xs block text-brand-cyan font-medium tracking-widest uppercase">SYSTEMS LTD</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#services" class="hover:text-brand-accent transition">Services</a>
+                    <a href="#cloud" class="hover:text-brand-accent transition">Cloud & IAM</a>
+                    <a href="#tech" class="hover:text-brand-accent transition">Tech Stack</a>
+                    <a href="#about" class="hover:text-brand-accent transition">About Us</a>
+                    <a href="#contact" class="hover:text-brand-accent transition">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-blue to-brand-cyan hover:opacity-90 text-white font-semibold text-sm shadow-md shadow-brand-blue/20 transition duration-200 transform hover:-translate-y-0.5">
+                        Schedule Consultation
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
-    </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-800 border-b border-slate-700 px-4 pt-2 pb-6 space-y-3 text-slate-300 font-medium">
+            <a href="#services" class="block py-2 hover:text-brand-accent">Services</a>
+            <a href="#cloud" class="block py-2 hover:text-brand-accent">Cloud & IAM</a>
+            <a href="#tech" class="block py-2 hover:text-brand-accent">Tech Stack</a>
+            <a href="#about" class="block py-2 hover:text-brand-accent">About Us</a>
+            <a href="#contact" class="block py-2 hover:text-brand-accent">Contact</a>
+            <a href="#contact" class="block text-center py-2.5 mt-2 rounded-lg bg-brand-blue text-white font-semibold">
+                Schedule Consultation
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative pt-16 pb-24 lg:pt-28 lg:pb-32 overflow-hidden border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl text-left">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-brand-cyan text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Next-Gen IT Infrastructure & Cloud Enablement
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+                    Accelerating Digital Transformation for <span class="gradient-text">Global Enterprises.</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+                    Vision Systems delivers enterprise cloud architecture, automated Identity & Access Management (IAM), advanced cyber defense, and managed IT services designed for continuous reliability.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
+                    <a href="#contact" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-bold text-base shadow-lg shadow-brand-blue/30 text-center hover:opacity-95 transition transform hover:-translate-y-0.5">
+                        Explore Enterprise Solutions
+                    </a>
+                    <a href="#services" class="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-base text-center transition">
+                        Our Capabilities
+                    </a>
+                </div>
+
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-slate-800">
+                    <div>
+                        <div class="text-3xl font-extrabold text-white mb-1">99.99%</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Uptime SLA Guarantee</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-brand-cyan mb-1">500+</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Enterprise Cloud Migrations</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-white mb-1">24/7/365</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Active SOC & Managed NOC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section id="services" class="py-24 bg-navy-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest mb-3">Core Expertise</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Enterprise IT Solutions Built to Scale</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-cyan flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cloud Architecture & Migration</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Seamless public, private, and hybrid cloud migrations (AWS, Azure, GCP) engineered with high availability, security compliance, and optimal cost management.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Identity & Access Management (IAM)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Zero Trust enterprise access frameworks, Single Sign-On (SSO), Multi-Factor Authentication (MFA), and automated role provisioning across cloud resources.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cybersecurity Operations</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Proactive enterprise threat monitoring, SIEM integration, vulnerability assessments, and automated incident response around the clock.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Next-Gen Networking & SD-WAN</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        High-performance enterprise wide-area networking, CDN configuration (Cloudflare), edge security, and robust routing infrastructure.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">DevOps & Infrastructure Automation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Infrastructure as Code (IaC) with Terraform, CI/CD pipeline automation, container orchestration (Kubernetes), and continuous delivery.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="glass-card p-8 rounded-2xl transition duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Managed IT & NOC Services</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        End-to-end managed infrastructure services with guaranteed SLAs, continuous network monitoring, and enterprise helpdesk support.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-cyan hover:text-brand-accent text-sm font-semibold">
+                        Learn More <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Capabilities Showcase -->
+    <section id="cloud" class="py-24 bg-navy-800/50 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest mb-3">Enterprise Solutions</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Unified Security & Multi-Cloud Control</h3>
+                    <p class="text-slate-300 text-base leading-relaxed mb-8">
+                        Modern enterprises demand resilient systems. We integrate identity governance directly with cloud infrastructures to reduce risk and elevate operating speed.
+                    </p>
+
+                    <!-- Interactive Tab Controls -->
+                    <div class="space-y-4">
+                        <button onclick="switchTab('cloud-tab')" id="btn-cloud-tab" class="tab-btn w-full text-left p-4 rounded-xl bg-navy-700 border border-brand-blue text-white font-semibold flex items-center justify-between transition">
+                            <span class="flex items-center gap-3">
+                                <i class="fa-solid fa-server text-brand-cyan"></i> Hybrid & Multi-Cloud Infrastructure
+                            </span>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+
+                        <button onclick="switchTab('iam-tab')" id="btn-iam-tab" class="tab-btn w-full text-left p-4 rounded-xl bg-navy-800 border border-slate-700 text-slate-300 hover:text-white font-semibold flex items-center justify-between transition">
+                            <span class="flex items-center gap-3">
+                                <i class="fa-solid fa-key text-brand-cyan"></i> Zero-Trust IAM & Governance
+                            </span>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+
+                        <button onclick="switchTab('sec-tab')" id="btn-sec-tab" class="tab-btn w-full text-left p-4 rounded-xl bg-navy-800 border border-slate-700 text-slate-300 hover:text-white font-semibold flex items-center justify-between transition">
+                            <span class="flex items-center gap-3">
+                                <i class="fa-solid fa-lock text-brand-cyan"></i> Automated Compliance & SOC
+                            </span>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content Card -->
+                <div class="lg:w-1/2 w-full">
+                    <div id="cloud-tab" class="tab-content glass-card p-8 rounded-2xl">
+                        <div class="text-brand-cyan font-mono text-sm mb-2">// Cloud Capability Overview</div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Multi-Cloud Deployment Engine</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Deploy resilient Kubernetes clusters and serverless architectures across AWS and Azure with automated failover and cost optimization algorithms.
+                        </p>
+                        <ul class="space-y-3 text-slate-300 text-sm mb-6">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Automated Terraform Infrastructure Pipelines</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Multi-Region DR & Auto-Scaling</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> 40% Average Cloud Spend Reduction</li>
+                        </ul>
+                    </div>
+
+                    <div id="iam-tab" class="tab-content hidden glass-card p-8 rounded-2xl">
+                        <div class="text-brand-cyan font-mono text-sm mb-2">// IAM Capability Overview</div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Identity Security & SSO Framework</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Eliminate credential exploitation risks with unified Okta, Azure AD (Entra ID), and Keycloak orchestration across enterprise applications.
+                        </p>
+                        <ul class="space-y-3 text-slate-300 text-sm mb-6">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Role-Based Access Control (RBAC) & Privileged Access</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Adaptive Risk-Based MFA Enforcement</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Automated Lifecycle Provisioning</li>
+                        </ul>
+                    </div>
+
+                    <div id="sec-tab" class="tab-content hidden glass-card p-8 rounded-2xl">
+                        <div class="text-brand-cyan font-mono text-sm mb-2">// Security & SOC Overview</div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Continuous Cyber Defense</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Protect digital assets with intelligent threat detection, automated vulnerability scanning, and SOC-as-a-Service integration.
+                        </p>
+                        <ul class="space-y-3 text-slate-300 text-sm mb-6">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> ISO 27001 & SOC 2 Compliance Audit Readiness</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Real-Time SIEM Threat Telemetry</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-emerald-400"></i> Cloudflare DDoS & WAF Protection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section id="tech" class="py-20 bg-navy-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest mb-3">Enterprise Tech Stack</h2>
+            <p class="text-2xl sm:text-3xl font-extrabold text-white mb-12">Powered by Industry-Leading Platforms</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-brands fa-aws text-3xl text-amber-500"></i>
+                    <span class="text-sm font-semibold text-slate-300">AWS</span>
+                </div>
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-brands fa-microsoft text-3xl text-blue-500"></i>
+                    <span class="text-sm font-semibold text-slate-300">Azure</span>
+                </div>
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-brands fa-cloudflare text-3xl text-orange-500"></i>
+                    <span class="text-sm font-semibold text-slate-300">Cloudflare</span>
+                </div>
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-brands fa-docker text-3xl text-cyan-400"></i>
+                    <span class="text-sm font-semibold text-slate-300">Docker</span>
+                </div>
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-solid fa-cubes text-3xl text-indigo-400"></i>
+                    <span class="text-sm font-semibold text-slate-300">Kubernetes</span>
+                </div>
+                <div class="p-6 rounded-xl bg-navy-800/80 border border-slate-800 hover:border-slate-700 transition flex flex-col items-center justify-center gap-3">
+                    <i class="fa-solid fa-code text-3xl text-purple-400"></i>
+                    <span class="text-sm font-semibold text-slate-300">Terraform</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Left Details -->
+                <div>
+                    <h2 class="text-xs font-bold text-brand-cyan uppercase tracking-widest mb-3">Get in Touch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">Let's Discuss Your IT Strategy</h3>
+                    <p class="text-slate-300 text-base leading-relaxed mb-8">
+                        Our cloud architects and security engineers are ready to assess your infrastructure and build a tailored execution roadmap.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-blue/10 text-brand-cyan flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Email Us</h4>
+                                <p class="text-slate-400 text-sm">enterprise@visionsystems.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-blue/10 text-brand-cyan flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Global Headquarters</h4>
+                                <p class="text-slate-400 text-sm">Technology Park, Executive Tower Suite 1200</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-brand-blue/10 text-brand-cyan flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Response Time</h4>
+                                <p class="text-slate-400 text-sm">Enterprise inquiries answered within 2 business hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form Card -->
+                <div class="glass-card p-8 rounded-2xl">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-slate-300 text-sm font-medium mb-2">Full Name</label>
+                            <input type="text" required placeholder="Uzair Ahmed" class="w-full px-4 py-3 rounded-lg bg-navy-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-300 text-sm font-medium mb-2">Work Email</label>
+                            <input type="email" required placeholder="uzair@company.com" class="w-full px-4 py-3 rounded-lg bg-navy-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-300 text-sm font-medium mb-2">Primary Area of Interest</label>
+                            <select class="w-full px-4 py-3 rounded-lg bg-navy-900 border border-slate-700 text-white focus:outline-none focus:border-brand-blue transition">
+                                <option>Cloud Architecture & Migration</option>
+                                <option>Identity & Access Management (IAM)</option>
+                                <option>Cybersecurity & SOC Operations</option>
+                                <option>Managed NOC Services</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-300 text-sm font-medium mb-2">Project Overview</label>
+                            <textarea rows="4" required placeholder="Tell us about your infrastructure goals..." class="w-full px-4 py-3 rounded-lg bg-navy-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue transition"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-bold text-base shadow-lg shadow-brand-blue/20 hover:opacity-95 transition">
+                            Send Enterprise Request
+                        </button>
+                    </form>
+
+                    <!-- Success Message Box -->
+                    <div id="form-success" class="hidden mt-4 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-sm text-center">
+                        <i class="fa-solid fa-circle-check text-lg mb-1 block"></i>
+                        Thank you! Your request has been received. An enterprise consultant will contact you shortly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-slate-800 text-slate-400 text-sm py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Col 1 -->
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-sm">V</div>
+                        <span class="text-lg font-bold text-white">VISION SYSTEMS</span>
+                    </a>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                        Delivering scalable, secure, and resilient IT infrastructure solutions for global enterprises.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Solutions</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#services" class="hover:text-white transition">Cloud Migration</a></li>
+                        <li><a href="#cloud" class="hover:text-white transition">IAM Zero Trust</a></li>
+                        <li><a href="#services" class="hover:text-white transition">24/7 SOC Security</a></li>
+                        <li><a href="#services" class="hover:text-white transition">DevOps Automation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#about" class="hover:text-white transition">About Vision Systems</a></li>
+                        <li><a href="#tech" class="hover:text-white transition">Tech Stack</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Careers</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <div class="flex items-center gap-4 text-slate-400 text-lg">
+                        <a href="#" class="hover:text-brand-cyan transition"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-brand-cyan transition"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="hover:text-brand-cyan transition"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 Vision Systems Ltd. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <a href="#" class="hover:underline">Terms of Service</a>
+                    <a href="#" class="hover:underline">Security Standard</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Show selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Reset tab button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-brand-blue', 'bg-navy-700', 'text-white');
+                btn.classList.add('border-slate-700', 'bg-navy-800', 'text-slate-300');
+            });
+
+            // Highlight active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('border-brand-blue', 'bg-navy-700', 'text-white');
+            activeBtn.classList.remove('border-slate-700', 'bg-navy-800', 'text-slate-300');
+        }
+
+        // Contact Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const successBox = document.getElementById('form-success');
+            successBox.classList.remove('hidden');
+            document.getElementById('contact-form').reset();
+        }
+    </script>
 </body>
 </html>
